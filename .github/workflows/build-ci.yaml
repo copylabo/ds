@@ -1,0 +1,23 @@
+name: Build CI test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.4.0
+
+    - name: Install dependencies
+      run: sudo apt install git
+
+    - name: Build and Deploy
+      run: |
+       git clone https://github.com/copylabo/ds
+       cd ds
+#      git checkout -b "$BRANCH_GEN_NO"
+       git branch -a
+       git status
+       git reset --hard
+       git checkout -b master
